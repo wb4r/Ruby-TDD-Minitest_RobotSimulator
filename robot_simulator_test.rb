@@ -15,83 +15,71 @@ class RobotTurningTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_invalid_robot_bearing
-    skip
+  def test_invalid_robot_bearing # 15
     assert_raises ArgumentError do
       robot.orient(:crood)
     end
   end
 
   def test_turn_right_from_north
-    skip
     robot.orient(:north)
     robot.turn_right
     assert_equal :east, robot.bearing
   end
 
   def test_turn_right_from_east
-    skip
     robot.orient(:east)
     robot.turn_right
     assert_equal :south, robot.bearing
   end
 
   def test_turn_right_from_south
-    skip
     robot.orient(:south)
     robot.turn_right
     assert_equal :west, robot.bearing
   end
 
   def test_turn_right_from_west
-    skip
     robot.orient(:west)
     robot.turn_right
     assert_equal :north, robot.bearing
   end
 
-  def test_turn_left_from_north
-    skip
+  def test_turn_left_from_north # 10
     robot.orient(:north)
     robot.turn_left
     assert_equal :west, robot.bearing
   end
 
   def test_turn_left_from_east
-    skip
     robot.orient(:east)
     robot.turn_left
     assert_equal :north, robot.bearing
   end
 
   def test_turn_left_from_south
-    skip
     robot.orient(:south)
     robot.turn_left
     assert_equal :east, robot.bearing
   end
 
   def test_turn_left_from_west
-    skip
     robot.orient(:west)
     robot.turn_left
     assert_equal :south, robot.bearing
   end
 
   def test_robot_coordinates
-    skip
     robot.at(3, 0)
     assert_equal [3, 0], robot.coordinates
   end
 
-  def test_other_robot_coordinates
-    skip
+  def test_other_robot_coordinates # 5
     robot.at(-2, 5)
     assert_equal [-2, 5], robot.coordinates
   end
 
   def test_advance_when_facing_north
-    skip
     robot.at(0, 0)
     robot.orient(:north)
     robot.advance
@@ -99,7 +87,6 @@ class RobotTurningTest < MiniTest::Unit::TestCase
   end
 
   def test_advance_when_facing_east
-    skip
     robot.at(0, 0)
     robot.orient(:east)
     robot.advance
@@ -107,7 +94,6 @@ class RobotTurningTest < MiniTest::Unit::TestCase
   end
 
   def test_advance_when_facing_south
-    skip
     robot.at(0, 0)
     robot.orient(:south)
     robot.advance
@@ -115,7 +101,6 @@ class RobotTurningTest < MiniTest::Unit::TestCase
   end
 
   def test_advance_when_facing_west
-    skip
     robot.at(0, 0)
     robot.orient(:west)
     robot.advance

@@ -108,34 +108,31 @@ class RobotTurningTest < MiniTest::Unit::TestCase
   end
 end
 
+
+
 class RobotSimulatorTest < MiniTest::Unit::TestCase
   def simulator
     @simulator ||= Simulator.new
   end
 
   def test_instructions_for_turning_left
-    skip
     assert_equal [:turn_left], simulator.instructions('L')
   end
 
   def test_instructions_for_turning_right
-    skip
     assert_equal [:turn_right], simulator.instructions('R')
   end
 
   def test_instructions_for_advancing
-    skip
     assert_equal [:advance], simulator.instructions('A')
   end
 
   def test_series_of_instructions
-    skip
     commands = [:turn_right, :advance, :advance, :turn_left]
     assert_equal commands, simulator.instructions('RAAL')
   end
 
   def test_instruct_robot
-    skip
     robot = Robot.new
     simulator.place(robot, x: -2, y: 1, direction: :east)
     simulator.evaluate(robot, 'RLAALAL')
@@ -144,7 +141,6 @@ class RobotSimulatorTest < MiniTest::Unit::TestCase
   end
 
   def test_instruct_many_robots
-    skip
     robot1 = Robot.new
     robot2 = Robot.new
     robot3 = Robot.new

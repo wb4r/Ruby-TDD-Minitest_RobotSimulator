@@ -1,20 +1,17 @@
-require 'pry'
-
 class Robot
   attr_reader :compass
 
   def initialize
     @compass = [:north, :east, :south, :west]
     @facing_to = true
-    @x_axis = []
-    @y_axis = []
+    @x_axis, @y_axis = [], []
   end
 
   def orient(direction)
     if compass.include?(direction) 
       @facing_to = direction
     else
-      raise ArgumentError.new("Waddayamean? Not gonna happen. Robot Out.")
+      raise ArgumentError.new("Wrong directions provided.")
     end
   end
 
@@ -39,23 +36,16 @@ class Robot
     @y_axis << y     
   end
 
-  def coordinates
-    location = []
-    location << @x_axis
-    location << @y_axis
-    location.flatten!   
+  def coordinates 
+    [@x_axis, @y_axis].flatten!
   end
 
   def advance
     case @facing_to
-    when :north
-      @y_axis[0] += 1
-    when :east
-      @x_axis[0] += 1
-    when :south
-      @y_axis[0] -= 1
-    when :west
-      @x_axis[0] -= 1
+    when :north then @y_axis[0] += 1
+    when :east then @x_axis[0] += 1
+    when :south then @y_axis[0] -= 1
+    when :west then @x_axis[0] -= 1
     end
   end
 end
@@ -71,14 +61,11 @@ class Simulator
    counter = 0
     while counter < letter_orders.length
       case letter_orders[counter]
-      when 'L' 
-        @commands << :turn_left
-      when 'R' 
-        @commands << :turn_right
-      when 'A' 
-        @commands << :advance
+      when 'L' then @commands << :turn_left
+      when 'R' then @commands << :turn_right
+      when 'A' then @commands << :advance
       end
-     counter+= 1
+     counter += 1
     end
     @commands
   end
@@ -95,16 +82,11 @@ class Simulator
     counter = 0    
     while counter < commands.length
       case commands[counter]
-      when :turn_right
-        robot.turn_right
-      when :turn_left
-        robot.turn_left
-      when :advance
-        robot.advance
+      when :turn_right then robot.turn_right
+      when :turn_left then robot.turn_left
+      when :advance then robot.advance
       end
       counter += 1      
     end        
   end
 end
-
-
